@@ -1,0 +1,20 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "module": "ES2022",
+    "noEmit": false,
+    // "emitDeclarationOnly": true,
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@trpc/*": ["src/*"],
+      "@/*": ["src/*"]
+    },
+
+    "outDir": "build"
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
