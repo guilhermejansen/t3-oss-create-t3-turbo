@@ -1,0 +1,36 @@
+{
+  "name": "create-t3-turbo",
+  "private": true,
+  "engines": {
+    "node": ">=18.18.2"
+  },
+  "packageManager": "bun@1.0.6",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "tooling/*"
+  ],
+  "scripts": {
+    "build": "turbo build",
+    "clean": "git clean -xdf node_modules",
+    "clean:workspaces": "turbo clean",
+    "postinstall": "bun lint:ws",
+    "db:push": "bun --cwd packages/db push",
+    "db:studio": "bun --cwd packages/db dev",
+    "dev": "turbo dev --parallel",
+    "format": "turbo format --continue -- --cache --cache-location='node_modules/.cache/.prettiercache' --no-error-on-unmatched-pattern",
+    "format:fix": "turbo format --continue -- --write --cache --cache-location='node_modules/.cache/.prettiercache' --no-error-on-unmatched-pattern",
+    "lint": "turbo lint --continue -- --cache --cache-location 'node_modules/.cache/.eslintcache'",
+    "lint:fix": "turbo lint --continue -- --fix --cache --cache-location 'node_modules/.cache/.eslintcache'",
+    "lint:ws": "bunx sherif@latest",
+    "typecheck": "turbo typecheck"
+  },
+  "devDependencies": {
+    "@acme/prettier-config": "workspace:*",
+    "@turbo/gen": "^1.10.16",
+    "prettier": "^3.0.3",
+    "turbo": "^1.10.16",
+    "typescript": "^5.2.2"
+  },
+  "prettier": "@acme/prettier-config"
+}
